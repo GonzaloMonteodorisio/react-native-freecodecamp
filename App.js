@@ -1,20 +1,67 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View, Text, Platform, StyleSheet, SafeAreaView, StatusBar } from "react-native";
 
-export default function App() {
+
+const App = () => {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.wrapper}>
+      <StatusBar barStyle="light-content" />
+      <View style={styles.container}>
+        <Text>Current Weather</Text>
+        <Text style={styles.temp}>6</Text>
+        <Text style={styles.feels}>Feels like 5</Text>
+        <View style={styles.highLowWrapper}>
+          <Text style={styles.highLow}>High: 8 </Text>
+          <Text style={styles.highLow}>Low: 6</Text>
+        </View>
+      </View>
+      <View style={styles.bodyWrapper}>
+        <Text style={styles.description}>Its sunny</Text>
+        <Text style={styles.message}>Its perfect t-shirt weather</Text>
+      </View>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
+  wrapper: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'pink',
   },
+  container: {
+  flex:1,
+    alignItems: 'center',
+    paddingTop: Platform.OS === 'android' ? 35 : 0, // Ajusta según sea necesario
+    paddingBottom: Platform.OS === 'android' ? 25 : 0, // Ajusta según sea necesario
+    borderColor: 'blue',
+    borderWidth: 1
+  },
+  temp: {
+    color: 'black',
+    fontSize: 48
+  },
+  feels: {
+    fontSize: 30,
+    color: 'black'
+  },
+  highLowWrapper: {
+    flexDirection: 'row'
+  },
+  highLow: {
+    color: 'black',
+    fontSize: 20
+  },
+  bodyWrapper: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start'
+  },
+  description: {
+    fontSize: 48
+  }, 
+  message: {
+    fontSize: 30
+  }
 });
+
+export default App;
