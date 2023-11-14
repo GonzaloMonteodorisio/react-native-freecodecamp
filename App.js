@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Platform, StyleSheet, SafeAreaView, StatusBar } from "react-native";
+import { Feather, Ionicons } from '@expo/vector-icons';
 
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
     <SafeAreaView style={styles.wrapper}>
       <StatusBar barStyle="light-content" />
       <View style={styles.container}>
+        <Feather name="sun" size={100} color="black" />
         <Text>Current Weather</Text>
         <Text style={styles.temp}>6</Text>
         <Text style={styles.feels}>Feels like 5</Text>
@@ -32,6 +34,7 @@ const styles = StyleSheet.create({
   container: {
   flex:1,
     alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: Platform.OS === 'android' ? 35 : 0, // Ajusta según sea necesario
     paddingBottom: Platform.OS === 'android' ? 25 : 0, // Ajusta según sea necesario
     borderColor: 'blue',
@@ -54,7 +57,9 @@ const styles = StyleSheet.create({
   },
   bodyWrapper: {
     justifyContent: 'flex-end',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    paddingLeft: 25,
+    marginBottom: 40
   },
   description: {
     fontSize: 48
