@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, Text, FlatList, View } from "react-native";
+import { SafeAreaView, Text, FlatList, View, Image, ImageBackground } from "react-native";
 import { Feather } from '@expo/vector-icons';
 
 import { DATA } from "./weatherData";
@@ -34,12 +34,17 @@ const renderItem = ({ item }) => (
 const UpcomingWeather = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <Text>Upcoming Weather</Text>
-            <FlatList
-                data={DATA}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.dt_txt}
-            />
+            <ImageBackground 
+                style={styles.image}
+                source={require('../../../assets/thunder.jpg')}
+            >
+                <Text>Upcoming Weather</Text>
+                <FlatList
+                    data={DATA}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.dt_txt}
+                />
+            </ImageBackground>
         </SafeAreaView>
     );
 }
