@@ -1,29 +1,19 @@
 import React from "react";
-import { SafeAreaView, Text, FlatList, View, Image, ImageBackground } from "react-native";
-import { Feather } from '@expo/vector-icons';
+import { 
+    SafeAreaView, 
+    Text, 
+    FlatList, 
+    ImageBackground 
+} from "react-native";
+
+import ListItem from "../../components/ListItem";
 
 import { DATA } from "./weatherData";
 
 import styles from "./styles";
 
-const Item = (props) => {
-    const { dt_txt, min, max, condition } = props;
-    return (
-        <View style={styles.item}>
-            <Feather
-                name="sun"
-                size={50}
-                color={"white"}
-            />
-            <Text style={styles.date}>{dt_txt}</Text>
-            <Text style={styles.temp}>{min}</Text>
-            <Text style={styles.temp}>{max}</Text>
-        </View>
-    );
-}
-
 const renderItem = ({ item }) => (
-    <Item
+    <ListItem
         condition={item.weather[0].main}
         dt_txt={item.dt_txt}
         min={item.main.temp_min}
@@ -32,10 +22,13 @@ const renderItem = ({ item }) => (
 );
 
 const UpcomingWeather = () => {
+
+    const { container, image } = styles;
+    
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={container}>
             <ImageBackground 
-                style={styles.image}
+                style={image}
                 source={require('../../../assets/thunder.jpg')}
             >
                 <Text>Upcoming Weather</Text>
