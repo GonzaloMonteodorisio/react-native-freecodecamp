@@ -8,6 +8,8 @@ import {
 
 import { Feather } from '@expo/vector-icons';
 
+import RowText from "../../components/RowText";
+
 import styles from "./styles";
 
 const CurrentWeather = () => {
@@ -32,15 +34,21 @@ const CurrentWeather = () => {
         <Text>Current Weather</Text>
         <Text style={temp}>6</Text>
         <Text style={feels}>Feels like 5</Text>
-        <View style={highLowWrapper}>
-          <Text style={highLow}>High: 8 </Text>
-          <Text style={highLow}>Low: 6</Text>
-        </View>
+        <RowText
+          messageOne="High: 8 " 
+          messageTwo="Low: 6"
+          containerStyles={highLowWrapper}
+          messageOneStyle={highLow}
+          messageTwoStyle={highLow}
+        />
       </View>
-      <View style={bodyWrapper}>
-        <Text style={description}>Its sunny</Text>
-        <Text style={message}>Its perfect t-shirt weather</Text>
-      </View>
+      <RowText
+        messageOne="Its sunny" 
+        messageTwo="Its perfect t-shirt weather"
+        containerStyles={bodyWrapper}
+        messageOneStyle={description}
+        messageTwoStyle={message}
+      />
     </SafeAreaView>
   );
 };

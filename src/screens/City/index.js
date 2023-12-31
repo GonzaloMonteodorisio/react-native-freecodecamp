@@ -5,7 +5,7 @@ import {
     ImageBackground,
     View,
 } from "react-native";
-import { Feather } from '@expo/vector-icons'
+import InconText from "../../components/IconText";
 
 import styles from "./styles";
 
@@ -19,6 +19,7 @@ const {
     populationWrapper,
     riseSetWrapper,
     riseSetText,
+    rowLayout,
 } = styles;
 
 const City = () => {
@@ -30,27 +31,27 @@ const City = () => {
             >
                 <Text style={[cityName, cityText]}>Paris</Text>
                 <Text style={[countryName, cityText]}>France</Text>
-                <View style={populationWrapper}>
-                    <Feather 
-                        name="user"
-                        size={50}
-                        color="red"
+                <View style={[populationWrapper, rowLayout]}>
+                    <InconText
+                        iconName="user"
+                        iconColor="red"
+                        bodyText="8000"
+                        bodyTextStyles={populationText}
                     />
-                    <Text style={populationText}>8000</Text>
                 </View>
-                <View style={riseSetWrapper}>
-                    <Feather 
-                        name="sunrise"
-                        size={50}
-                        color="white"
+                <View style={[riseSetWrapper, rowLayout]}>
+                    <InconText
+                        iconName="sunrise"
+                        iconColor="white"
+                        bodyText="10:46:58am"
+                        bodyTextStyles={riseSetText}
                     />
-                    <Text style={riseSetText}>10:46:58am</Text>                    
-                    <Feather 
-                        name="sunset"
-                        size={50}
-                        color="white"
-                    />
-                    <Text style={riseSetText}>17:28:15pm</Text>                    
+                    <InconText
+                        iconName="sunset"
+                        iconColor="white"
+                        bodyText="17:28:15pm"
+                        bodyTextStyles={riseSetText}
+                    />                                       
                 </View>
             </ImageBackground>
         </SafeAreaView>
