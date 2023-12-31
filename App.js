@@ -5,8 +5,8 @@ import {
 } from "react-native";
 
 import CurrentWeather from "./src/screens/CurrentWeather";
-
 import UpcomingWeather from "./src/screens/UpcomingWeather";
+import City from "./src/screens/City";
 
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <View style={container}>
-      <UpcomingWeather />
+      <CurrentWeather />
     </View>
   );
 };
