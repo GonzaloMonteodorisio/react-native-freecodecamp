@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
         // marginTop: StatusBar.currentHeight || 0,
         paddingTop: Platform.OS === 'android' ? 35 : 0, // Ajusta según sea necesario
         // paddingBottom: Platform.OS === 'android' ? 25 : 0, // Ajusta según sea necesario
-        borderColor: 'blue',
-        borderWidth: 1
+        // borderColor: 'blue',
+        // borderWidth: 1
     },
     imageLayout: {
         flex: 1,

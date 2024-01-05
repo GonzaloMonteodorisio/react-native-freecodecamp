@@ -5,14 +5,24 @@ import {
   SafeAreaView, 
   StatusBar 
 } from "react-native";
-
 import { Feather } from '@expo/vector-icons';
-
 import RowText from "../../components/RowText";
+import { weatherType } from "../../utilities/weatherType";
 
 import styles from "./styles";
 
 const CurrentWeather = () => {
+
+  const { 
+    Thuntherstorm, 
+    Drizzle, 
+    Rain, 
+    Snow, 
+    Clear, 
+    Clouds,
+    Haze, 
+    Mist 
+  } = weatherType;
 
   const { 
     wrapper, 
@@ -38,16 +48,16 @@ const CurrentWeather = () => {
           messageOne="High: 8 " 
           messageTwo="Low: 6"
           containerStyles={highLowWrapper}
-          messageOneStyle={highLow}
-          messageTwoStyle={highLow}
+          messageOneStyles={highLow}
+          messageTwoStyles={highLow}
         />
       </View>
       <RowText
         messageOne="Its sunny" 
-        messageTwo="Its perfect t-shirt weather"
+        messageTwo={Thuntherstorm.message}
         containerStyles={bodyWrapper}
-        messageOneStyle={description}
-        messageTwoStyle={message}
+        messageOneStyles={description}
+        messageTwoStyles={message}
       />
     </SafeAreaView>
   );

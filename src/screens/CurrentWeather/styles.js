@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: Platform.OS === 'android' ? 35 : 0, // Ajusta según sea necesario
         paddingBottom: Platform.OS === 'android' ? 25 : 0, // Ajusta según sea necesario
-        borderColor: 'blue',
-        borderWidth: 1,
+        // borderColor: 'blue',
+        // borderWidth: 1,
         // backgroundColor: 'yellow'
     },
     temp: {
