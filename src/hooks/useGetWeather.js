@@ -18,9 +18,14 @@ export const useGetWeather = () => {
   const fetchWeatherData = async(latitude, longitude, openweatherAPIKey) => {
 
       try {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${openweatherAPIKey}`);
+        // Obtener la hora actual en formato ISO 8601
+        const horaActual = new Date().getTime();
+
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${openweatherAPIKey}&units=metric&dt=${horaActual}`);
   
         const data = await response.json();
+
+        console.info('data - useGetWeather: ', data);
     
         setWeather(data);
       } catch(error) {

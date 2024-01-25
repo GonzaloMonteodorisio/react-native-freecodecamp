@@ -11,52 +11,59 @@ import { weatherType } from "../../utilities/weatherType";
 
 import styles from "./styles";
 
-const CurrentWeather = () => {
-
-  const { 
-    Thuntherstorm, 
-    Drizzle, 
-    Rain, 
-    Snow, 
-    Clear, 
-    Clouds,
-    Haze, 
-    Mist 
-  } = weatherType;
+const CurrentWeather = ({ weatherData }) => {
+  console.info('weatherData - CurrentWeather: ', weatherData);
 
   const { 
     wrapper, 
     container, 
-    temp, 
+    temp: tempStyles, 
     feels, 
     highLowWrapper, 
     highLow, 
     bodyWrapper, 
-    description, 
+    description: descriptionStyles, 
     message 
   } = styles;
 
+  const { 
+    main: { temp, feels_like, tepm_max, temp_min }, 
+    weather 
+  } = weatherData;
+
+  const firstWeather = weather[0];
+
+  const { main } = firstWeather;
+  const { description } = firstWeather;
+
+  console.info('firstWeather - CurrentWeather: ', firstWeather);
+  console.info('weatherType[main] - CurrentWeather: ', weatherType[main]);
+
   return (
-    <SafeAreaView style={wrapper}>
+    <SafeAreaView 
+      style={[
+        wrapper, 
+        { backgroundColor: weatherType[main].backgroundColor }
+      ]}>
       <StatusBar barStyle="light-content" />
       <View style={container}>
-        <Feather name="sun" size={100} color="black" />
+        <Feather name={weatherType[main].icon} size={100} color="white" />
         <Text>Current Weather</Text>
-        <Text style={temp}>6</Text>
-        <Text style={feels}>Feels like 5</Text>
+        <Text style={tempStyles}>{temp}</Text>
+        <Text style={feels}>Feels like {`${feels_like}`}</Text>
         <RowText
-          messageOne="High: 8 " 
-          messageTwo="Low: 6"
+          messageOne={`High: ${tepm_max}`}
+          messageTwo={`low: ${temp_min}`}
           containerStyles={highLowWrapper}
           messageOneStyles={highLow}
           messageTwoStyles={highLow}
         />
       </View>
       <RowText
-        messageOne="Its sunny" 
-        messageTwo={Thuntherstorm.message}
+        messageOne={description} 
+        messageTwo={weatherType[main].message}
         containerStyles={bodyWrapper}
-        messageOneStyles={description}
+        messageOneStyles={descriptionStyles}
         messageTwoStyles={message}
       />
     </SafeAreaView>

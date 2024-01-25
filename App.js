@@ -18,26 +18,23 @@ const App = () => {
   console.info('loading - App.js: ', loading);
   console.info('error - App.js: ', error);
 
-  if (weather) {
+  if (weather && weather?.list) {
     console.info('weather - App.js: ', weather);
+    return (
+      <NavigationContainer>
+        <Tabs weather={weather}/>
+      </NavigationContainer>
+    );
   }
 
-  if (loading) {
-    return(
-      <View style={styles.container}>
-        <ActivityIndicator 
-          size="large"
-          color="blue"
-        />
-      </View>
-    )
-  }
-
-  return (
-    <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
-  );
+  return(
+    <View style={styles.container}>
+      <ActivityIndicator 
+        size="large"
+        color="blue"
+      />
+    </View>
+  )
 };
 
 const styles = StyleSheet.create({
