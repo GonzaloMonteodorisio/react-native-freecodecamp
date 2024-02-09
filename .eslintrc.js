@@ -6,7 +6,8 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "@react-native-community"
+        "@react-native-community",
+        "plugin:react-hooks/recommended",
     ],
     "overrides": [
         /*
@@ -28,7 +29,8 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "react-hooks",
     ],
     "rules": {
         semi: ['error', 'never'],
@@ -37,6 +39,8 @@ module.exports = {
         'no-use-before-define': [
             'error',
             { functions: true, classes: true, variables: false }
-        ]
+        ],
+        "react-hooks/rules-of-hooks": 'error',
+        "react-hooks/exhaustive-deps": 'warn' // <--- THIS IS THE NEW RULE
     }
 }
