@@ -23,29 +23,28 @@ const CenteredLabel = ({ label, focused }) => (
 );
 */
 
-const Tabs = () => {
+const Tabs = ({ weather }) => {
     return (
         <Tab.Navigator 
-            screenOptions={{
-                tabBarActiveTintColor: 'tomato',
-                tabBarInactiveTintColor: 'grey',
-                tabBarStyle: {
-                    backgroundColor: 'lightblue'
-                },
-                headerStyle: {
-                    backgroundColor: 'lightblue'
-                },
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize: 25,
-                    color: 'tomato'
-                },
-								headerTitleAlign: 'center'
-            }}
+          screenOptions={{
+              tabBarActiveTintColor: 'tomato',
+              tabBarInactiveTintColor: 'grey',
+              tabBarStyle: {
+                  backgroundColor: 'lightblue'
+              },
+              headerStyle: {
+                  backgroundColor: 'lightblue'
+              },
+              headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize: 25,
+                  color: 'tomato'
+              },
+              headerTitleAlign: 'center'
+          }}
         >
           <Tab.Screen 
             name="Current" 
-            component={CurrentWeather} 
             options={{
               // tabBarLabel: ({ focused }) =>  <CenteredLabel label="Current" focused={focused} />,
               tabBarIcon: ({ focused }) => (
@@ -55,7 +54,9 @@ const Tabs = () => {
                   color={focused ? 'tomato' : 'black'}
                 />)
             }}
-          />
+          >
+            {() => <CurrentWeather weatherData={weather.list[0]}/>}
+          </Tab.Screen>
           <Tab.Screen 
             name="Upcoming" 
             component={UpcomingWeather} 

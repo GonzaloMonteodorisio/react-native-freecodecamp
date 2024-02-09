@@ -4,10 +4,8 @@ import {
   View, 
   StyleSheet,
 } from "react-native"; 
-import * as Location from 'expo-location';
 import { NavigationContainer } from "@react-navigation/native";
 import Tabs from "./src/components/Tabs";
-import { OPEN_WEATHER_API_KEY } from '@env';
 import { useGetWeather } from "./src/hooks/useGetWeather";
 
 const App = () => {
@@ -17,18 +15,20 @@ const App = () => {
   console.info('error - App: ', error);
   console.info('weather - App: ', weather);
 
+    if (weather && weather?.list) {
+      return (
+        <NavigationContainer>
+          <Tabs weather={weather} />
+        </NavigationContainer>
+      )
+    }
+
   return (
     <View style={styles.container}>
-      {loading ? (
-        <ActivityIndicator
-          size="large"
-          color="blue"
-        />
-      ) : (
-        <NavigationContainer>
-          <Tabs />
-        </NavigationContainer>
-      )}
+      <ActivityIndicator
+        size="large"
+        color="blue"
+      />
     </View>
   );
 };
