@@ -1,14 +1,13 @@
 import React from "react";
 import { 
     SafeAreaView, 
-    Text, 
     FlatList, 
     ImageBackground 
 } from "react-native";
 
 import ListItem from "../../components/ListItem";
 
-import { DATA } from "./weatherData";
+// import { DATA } from "./weatherData";
 
 import styles from "./styles";
 
@@ -21,7 +20,7 @@ const renderItem = ({ item }) => (
     />
 );
 
-const UpcomingWeather = () => {
+const UpcomingWeather = ({ weatherData }) => {
 
     const { container, image } = styles;
     
@@ -31,9 +30,8 @@ const UpcomingWeather = () => {
                 style={image}
                 source={require('../../../assets/thunder.jpg')}
             >
-                <Text>Upcoming Weather</Text>
                 <FlatList
-                    data={DATA}
+                    data={weatherData}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.dt_txt}
                 />

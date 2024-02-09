@@ -6,6 +6,8 @@ import {
 
 import { Feather } from '@expo/vector-icons';
 
+import { weatherType } from "../../utilities/weatherType";
+
 import styles from "./styles";
 
 const ListItem = (props) => {
@@ -14,13 +16,12 @@ const ListItem = (props) => {
     return (
         <View style={item}>
             <Feather
-                name="sun"
+                name={weatherType[condition].icon}
                 size={50}
                 color={"white"}
             />
             <Text style={date}>{dt_txt}</Text>
-            <Text style={temp}>{min}</Text>
-            <Text style={temp}>{max}</Text>
+            <Text style={temp}>{`${Math.round(min)}°/${Math.round(max)}°`}</Text>
         </View>
     );
 }
