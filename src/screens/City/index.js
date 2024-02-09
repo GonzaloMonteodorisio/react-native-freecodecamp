@@ -5,6 +5,7 @@ import {
     ImageBackground,
     View,
 } from "react-native";
+import moment from "moment";
 import InconText from "../../components/IconText";
 
 import styles from "./styles";
@@ -22,20 +23,29 @@ const {
     rowLayout,
 } = styles;
 
-const City = () => {
+const City = ({ weatherData }) => {
+
+    const { 
+        name,
+        country,
+        population,
+        sunrise,
+        sunset,
+    } = weatherData;
+
     return (
         <SafeAreaView style={container}>
             <ImageBackground 
                 source={require('../../../assets/city-sunrise-background.jpg')}
                 style={imageLayout}
             >
-                <Text style={[cityName, cityText]}>Paris</Text>
-                <Text style={[countryName, cityText]}>France</Text>
+                <Text style={[cityName, cityText]}>{name}</Text>
+                <Text style={[countryName, cityText]}>{country}</Text>
                 <View style={[populationWrapper, rowLayout]}>
                     <InconText
                         iconName="user"
                         iconColor="red"
-                        bodyText="8000"
+                        bodyText={`Population: ${population}`}
                         bodyTextStyles={populationText}
                     />
                 </View>
@@ -43,13 +53,13 @@ const City = () => {
                     <InconText
                         iconName="sunrise"
                         iconColor="white"
-                        bodyText="10:46:58am"
+                        bodyText={moment(sunrise * 1000).format('h:mm:ss a')}
                         bodyTextStyles={riseSetText}
                     />
                     <InconText
                         iconName="sunset"
                         iconColor="white"
-                        bodyText="17:28:15pm"
+                        bodyText={moment(sunset * 1000).format('h:mm:ss a')}
                         bodyTextStyles={riseSetText}
                     />                                       
                 </View>
