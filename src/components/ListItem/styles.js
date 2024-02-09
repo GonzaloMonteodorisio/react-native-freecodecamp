@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 20
     },
+    dateTextWrapper: {
+        flexDirection: 'column'
+    },
     date: {
         color: 'white',
         fontSize: 15
