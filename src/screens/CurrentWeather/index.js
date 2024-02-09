@@ -31,23 +31,17 @@ const CurrentWeather = ({ weatherData }) => {
     weather 
   } = weatherData;
 
-  const firstWeather = weather[0];
-
-  const { main } = firstWeather;
-  const { description } = firstWeather;
-
-  console.info('firstWeather - CurrentWeather: ', firstWeather);
-  console.info('weatherType[main] - CurrentWeather: ', weatherType[main]);
+  const weatherCondition = weather[0]?.main;
 
   return (
     <SafeAreaView 
       style={[
         wrapper, 
-        { backgroundColor: weatherType[main].backgroundColor }
+        { backgroundColor: weatherType[weatherCondition]?.backgroundColor }
       ]}>
       <StatusBar barStyle="light-content" />
       <View style={container}>
-        <Feather name={weatherType[main].icon} size={100} color="white" />
+        <Feather name={weatherType[weatherCondition]?.icon} size={100} color="white" />
         <Text>Current Weather</Text>
         <Text style={tempStyles}>{`${temp}°`}</Text>
         <Text style={feels}>Feels like {`${feels_like}°`}</Text>
@@ -60,8 +54,8 @@ const CurrentWeather = ({ weatherData }) => {
         />
       </View>
       <RowText
-        messageOne={description} 
-        messageTwo={weatherType[main].message}
+        messageOne={weather[0]?.description} 
+        messageTwo={weatherType[weatherCondition]?.message}
         containerStyles={bodyWrapper}
         messageOneStyles={descriptionStyles}
         messageTwoStyles={message}

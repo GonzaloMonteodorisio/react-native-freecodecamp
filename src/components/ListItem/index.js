@@ -18,7 +18,7 @@ const ListItem = (props) => {
     return (
         <View style={item}>
             <Feather
-                name={weatherType[condition].icon}
+                name={weatherType[condition]?.icon}
                 size={50}
                 color={"white"}
             />
