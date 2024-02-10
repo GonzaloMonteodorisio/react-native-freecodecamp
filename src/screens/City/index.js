@@ -36,7 +36,7 @@ const City = ({ weatherData }) => {
     return (
         <SafeAreaView style={container}>
             <ImageBackground 
-                source={require('../../../assets/city-sunrise-background.jpg')}
+                source={require('../../../assets/monumento-soleado.jpg')}
                 style={imageLayout}
             >
                 <Text style={[cityName, cityText]}>{name}</Text>
