@@ -43,8 +43,13 @@ export const useGetWeather = () => {
       try {
         let location = await Location.getCurrentPositionAsync();
         console.info('location - useGetWeather: ', location);
-        setLat(location?.coords?.latitude);
-        setLon(location?.coords?.longitude);
+        // setLat(location?.coords?.latitude);
+        // setLon(location?.coords?.longitude);
+
+        // Coords Rosario
+        setLat(-32.9728);
+        setLon(-60.6391);
+
         await fetchWeatherData();
       } catch (error) {
         console.error('Error getting location:', error);

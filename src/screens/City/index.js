@@ -33,6 +33,11 @@ const City = ({ weatherData }) => {
         sunset,
     } = weatherData;
 
+    console.info(sunrise);
+    console.info(sunset);
+
+    const threeHoursInSeconds = 3 * 60 * 60;
+
     return (
         <SafeAreaView style={container}>
             <ImageBackground 
@@ -53,13 +58,13 @@ const City = ({ weatherData }) => {
                     <InconText
                         iconName="sunrise"
                         iconColor="white"
-                        bodyText={moment(sunrise * 1000).format('h:mm:ss a')}
+                        bodyText={moment((sunrise - threeHoursInSeconds) * 1000).format('h:mm:ss a')}
                         bodyTextStyles={riseSetText}
                     />
                     <InconText
                         iconName="sunset"
                         iconColor="white"
-                        bodyText={moment(sunset * 1000).format('h:mm:ss a')}
+                        bodyText={moment((sunset - threeHoursInSeconds) * 1000).format('h:mm:ss a')}
                         bodyTextStyles={riseSetText}
                     />                                       
                 </View>
