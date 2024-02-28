@@ -16,14 +16,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMaps" : {
+          "apiKey": "AIzaSyACt7FFvnCGDFCWrsLAu1BXjN9MXRa0ig0"
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.gonzalomonteodorisio.WeatherApp"
+      "package": "com.gonzalomonteodorisio.WeatherApp",
+        "config": {
+          "googleMaps" : {
+            "apiKey": "AIzaSyACt7FFvnCGDFCWrsLAu1BXjN9MXRa0ig0"
+          }
+        }
     },
     "web": {
       "favicon": "./assets/favicon.png"
